@@ -82,6 +82,15 @@
     testar('AT07', 'Tentativa de seleção de assento já ocupado', validarNome(''), false);
     testar('AT08', 'Cálculo correto do total para múltiplos assentos', calcularIngressos(sessao('far-2100'), 2, 0, 20), 40);
 
+// Testes de Caixa Branca (Estruturais)
+    testar('CB-00', 'Nome com menos de 3 caracteres (falso)', validarNome('Zé'), false);
+    testar('CB-01', 'Nome com 3 ou mais caracteres (verdadeiro)', validarNome('Carlos'), true);
+    testar('CB-02', 'Formato de e-mail válido com @ e domínio', validarEmail('ana@exemplo.com'), true);
+    testar('CB-03', 'E-mail sem o símbolo @ (falso)', validarEmail('clienteemail.com'), false);
+    testar('CB-04', 'Quantidade dentro do limite de 1 a 10 ingressos (verdadeiro)', validarQuantidadeIngressos(5), true);
+    testar('CB-05', 'Quantidade abaixo do mínimo de 1 ingresso (falso)', validarQuantidadeIngressos(0), false);
+    testar('CB-06', 'Quantidade acima do teto máximo de 10 ingressos (falso)', validarQuantidadeIngressos(11), false);
+
     mostrarResultados();
   </script>
 </body>
