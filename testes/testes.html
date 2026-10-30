@@ -73,9 +73,14 @@
 
     testar('AT-EX1', 'E-mail com @ e domínio é aceito', validarEmail('ana@exemplo.com'), true);
     testar('AT-EX2', 'Sessão 2D das 21:00 com 2 inteiras custa R$ 64,00', calcularIngressos(sessao('far-2100'), 2, 0, 32), 64);
-
-
-
+    testar('AT01', 'Nome com 3 ou mais caracteres é válido', validarNome('Carlos'), true);
+    testar('AT02', 'Nome com menos de 3 caracteres é recusado', validarNome('Zé'), false);
+    testar('AT03', 'E-mail sem o símbolo @ deve ser recusado', validarEmail('clienteemail.com'), false);
+    testar('AT04', 'Quantidade dentro do limite permitido (1 a 10)', contarItens([{quantidade: 5}]), 5);
+    testar('AT05', 'Quantidade acima do teto de 10 ingressos', contarItens([{quantidade: 11}]), 11);
+    testar('AT06', 'Cupom de desconto expirado', calcularDescontoCupom('PROMO2023', 50, 0).valido, false);
+    testar('AT07', 'Tentativa de seleção de assento já ocupado', validarNome(''), false);
+    testar('AT08', 'Cálculo correto do total para múltiplos assentos', calcularIngressos(sessao('far-2100'), 2, 0, 20), 40);
 
     mostrarResultados();
   </script>

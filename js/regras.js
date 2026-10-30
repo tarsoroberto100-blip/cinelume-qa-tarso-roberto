@@ -82,6 +82,20 @@ function validarEmail(email) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim());
 }
 
+function validarQuantidadeIngressos(qtd) {
+  return qtd > 0 && qtd <= MAX_POR_PRODUTO;
+}
+
+function validarCupom(codigo) {
+  const cupom = codigo.trim().toUpperCase();
+  return cupom === 'CINE10' || cupom === 'PIPOCA5';
+}
+
+function validarAssento(assento) {
+  const assentosOcupados = ['A01', 'B02', 'C03'];
+  return !assentosOcupados.includes(assento);
+}
+
 function formatarMoeda(valor) {
   return 'R$ ' + valor.toFixed(2).replace('.', ',');
 }
